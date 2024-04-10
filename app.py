@@ -55,11 +55,11 @@ class XMLtoPDFConverter:
         tree = ET.parse(xml_path)
         root = tree.getroot()
 
-        # Extração das informações básicas (exemplo: emitente, destinatário)
+        # Extraçãoo das informações -- emitente, destinatárioo
         for child in root.findall('.//nfe:infNFe', ns):
             for info in child:
                 if info.tag.endswith('emit') or info.tag.endswith('dest'):
-                    # Trata informações - emitente e destinatário
+                    # Trata informaçõoes - emitente e destinatário
                     section_info = {}
                     for detail in info:
                         detail_tag = detail.tag.replace('{http://www.portalfiscal.inf.br/nfe}', '')
@@ -74,7 +74,7 @@ class XMLtoPDFConverter:
                             section_info[detail_tag] = detail.text
                     informacoes[info.tag.replace('{http://www.portalfiscal.inf.br/nfe}', '')] = section_info
                 elif info.tag.endswith('det'):
-                    # Trata detalhes dos produtos
+                    # Trata detalhes doos produotos
                     if 'prod' not in informacoes:
                         informacoes['prod'] = []
                     prod_info = {}
